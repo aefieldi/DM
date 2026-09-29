@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DM Automations Guide</title>
+<meta name="description" content="The five automated DMs Amanda runs in her Skool with Panda: exact messages, timing, and how to make them yours.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0a12;--bg2:#12101d;--surf:#15121f;--surf2:#1c1829;--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.14);
+  --txt:#f1eefb;--soft:#c9c3dd;--muted:#8b85a3;--lav:#b79cf5;--vio:#7c5cf0;--gold:#e8c878;--mint:#7fe0b8;--pink:#f08bb0;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f7f5fc;--bg2:#efebf8;--surf:#ffffff;--surf2:#f2eef9;--line:rgba(20,10,50,.08);--line2:rgba(20,10,50,.16);--txt:#1a1530;--soft:#3c3558;--muted:#6f6890;--lav:#7c5cf0;--gold:#a8812c;--mint:#1f9d6b;--pink:#c2477a}}
+:root[data-theme="light"]{--bg:#f7f5fc;--bg2:#efebf8;--surf:#ffffff;--surf2:#f2eef9;--line:rgba(20,10,50,.08);--line2:rgba(20,10,50,.16);--txt:#1a1530;--soft:#3c3558;--muted:#6f6890;--lav:#7c5cf0;--gold:#a8812c;--mint:#1f9d6b;--pink:#c2477a}
+:root[data-theme="dark"]{--bg:#0b0a12;--bg2:#12101d;--surf:#15121f;--surf2:#1c1829;--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.14);--txt:#f1eefb;--soft:#c9c3dd;--muted:#8b85a3;--lav:#b79cf5;--gold:#e8c878;--mint:#7fe0b8;--pink:#f08bb0}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:Outfit,system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:300;line-height:1.6;
+  background-image:radial-gradient(ellipse at 0% 0%,rgba(124,92,240,.22),transparent 45%),radial-gradient(ellipse at 100% 100%,rgba(127,224,184,.07),transparent 45%);background-attachment:fixed}
+.wrap{max-width:920px;margin:0 auto;padding:56px 18px 90px}
+h1,h2,h3{font-family:Outfit,system-ui,sans-serif;font-weight:700;letter-spacing:-.02em;margin:0}
+.serif{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400}
+.mono{font-family:"DM Mono",ui-monospace,Menlo,monospace}
+a{color:var(--lav);text-decoration:none;border-bottom:1px solid rgba(183,156,245,.4)}
+a:hover{border-color:var(--lav)}
+a:focus-visible,button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px solid var(--lav);outline-offset:3px;border-radius:6px}
+
+/* hero */
+.hero{padding:0 0 34px}
+.hero .who{font-family:"DM Mono",monospace;font-size:13px;letter-spacing:.08em;color:var(--lav);margin:0 0 18px}
+.hero h1{font-size:clamp(44px,8.5vw,92px);line-height:.95;letter-spacing:-.045em}
+.hero h1 .serif{color:var(--lav);font-size:1.04em;letter-spacing:-.01em}
+.hero .desc{color:var(--soft);font-size:18px;max-width:600px;margin:22px 0 0}
+.hero .prep{color:var(--muted);font-size:14px;margin:14px 0 0}
+.replay{display:inline-block;margin-top:18px;font-family:"DM Mono",monospace;font-size:13px}
+
+/* sections */
+section{margin-top:26px}
+.card{position:relative;background:linear-gradient(135deg,rgba(124,92,240,.13) 0%,var(--surf) 40%,var(--bg2) 100%);border:1px solid var(--line2);border-radius:26px;padding:32px 34px;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:44px 44px;opacity:.5;-webkit-mask-image:linear-gradient(90deg,transparent 35%,#000 100%);mask-image:linear-gradient(90deg,transparent 35%,#000 100%)}
+.card>*{position:relative}
+@media(max-width:600px){.card{padding:24px 20px;border-radius:20px}.wrap{padding-top:36px}}
+.sec-title{font-size:clamp(26px,4.2vw,36px);line-height:1.08;margin:0 0 6px}
+.sec-sub{color:var(--muted);font-size:15px;margin:0 0 22px}
+
+/* snapshot stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{border:1px solid var(--line2);border-radius:18px;padding:16px 16px 14px;background:rgba(0,0,0,.14)}
+:root[data-theme="light"] .stat{background:var(--surf2)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .stat{background:var(--surf2)}}
+.stat .v{font-weight:700;font-size:28px;letter-spacing:-.03em;line-height:1.05}
+.stat .l{color:var(--muted);font-size:13px;margin-top:6px;line-height:1.35}
+.stat.warn .v{color:var(--pink)}
+.stat.good .v{color:var(--mint)}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.links a{border:1px solid var(--line2);border-radius:99px;padding:8px 14px;font-size:14px;color:var(--soft)}
+.links a span{color:var(--muted);margin-left:6px}
+
+/* lists */
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:18px 30px}
+@media(max-width:700px){.twocol{grid-template-columns:1fr}}
+.block h3{font-size:17px;font-weight:600;margin:0 0 8px;color:var(--txt)}
+ul.dots{list-style:none;margin:0;padding:0}
+ul.dots li{position:relative;padding-left:18px;margin:0 0 8px;color:var(--soft);font-size:15.5px}
+ul.dots li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--lav);opacity:.8}
+.goal{display:grid;grid-template-columns:minmax(120px,190px) 1fr;border-top:1px solid var(--line)}
+.goal:last-child{border-bottom:1px solid var(--line)}
+.goal div{padding:12px 0}
+.goal .k{color:var(--gold);font-size:14px;font-weight:500;padding-right:16px}
+.goal .val{color:var(--soft);font-size:15.5px}
+@media(max-width:560px){.goal{grid-template-columns:1fr}.goal .k{padding-bottom:0}}
+
+/* bottleneck: the one loud moment */
+.bottleneck{border-color:rgba(232,200,120,.35)}
+.quote{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-size:clamp(22px,3.4vw,30px);line-height:1.3;color:var(--gold);margin:0 0 22px;max-width:760px}
+.quote::before{content:"\201C"}.quote::after{content:"\201D"}
+.verdict{font-size:clamp(24px,3.6vw,32px);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin:0 0 16px;max-width:760px}
+
+/* big picture */
+.moves{display:grid;gap:14px}
+.move{display:grid;grid-template-columns:54px 1fr;gap:6px 18px;border:1px solid var(--line2);border-radius:20px;padding:22px 22px 18px;background:rgba(0,0,0,.12)}
+:root[data-theme="light"] .move{background:var(--surf2)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .move{background:var(--surf2)}}
+.move .n{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-size:46px;line-height:.9;color:var(--lav)}
+.move h3{font-size:20px;line-height:1.25;margin:4px 0 10px}
+.move ul.dots li{font-size:15px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tag{font-size:13px;color:var(--soft);border:1px solid var(--line2);border-radius:99px;padding:5px 12px;background:rgba(124,92,240,.08)}
+a.tag{color:var(--lav);border-color:rgba(183,156,245,.45)}
+a.tag:hover{border-color:var(--lav)}
+.ask{margin:22px 0 0;font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-size:24px;color:var(--gold)}
+@media(max-width:560px){.move{grid-template-columns:1fr}}
+
+/* notes + steps */
+.notes-view{white-space:pre-wrap;color:var(--soft);font-size:15.5px;min-height:60px}
+.empty{color:var(--muted);font-style:italic}
+textarea,input[type=text]{width:100%;background:var(--bg2);color:var(--txt);border:1px solid var(--line2);border-radius:14px;padding:14px 16px;font:inherit;font-size:15.5px;line-height:1.55}
+textarea{min-height:220px;resize:vertical}
+.step{display:grid;grid-template-columns:36px 1fr;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.step .num{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--vio);color:#fff;font-weight:600}
+.step.done .txt{text-decoration:line-through;color:var(--muted)}
+.step .txt{color:var(--soft);font-size:15.5px}
+.step label{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin-top:6px}
+.bar{display:flex;gap:12px;align-items:center;margin-top:18px;flex-wrap:wrap}
+button{font:inherit;font-weight:500;font-size:14px;border-radius:99px;padding:10px 18px;border:1px solid var(--line2);background:transparent;color:var(--txt);cursor:pointer}
+button.primary{background:var(--vio);border-color:var(--vio);color:#fff}
+button[disabled]{opacity:.5;cursor:default}
+.status{font-size:13px;color:var(--muted)}
+.hidden{display:none!important}
+.sign{margin-top:44px;font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-size:30px;color:var(--lav)}
+.foot{color:var(--muted);font-size:13px;margin-top:8px}
+@media (prefers-reduced-motion:no-preference){.hero h1{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}}
+
+/* ---- guide additions (same tokens as the audit page) ---- */
+.btn{display:inline-block;border-radius:99px;padding:12px 22px;background:var(--vio);color:#fff;border:1px solid var(--vio);font-weight:500;font-size:15px}
+.btn:hover{border-color:var(--lav)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center;margin-top:24px}
+.hero .cta small{color:var(--muted);font-size:13px;max-width:380px;line-height:1.45}
+.stat .v.mono{font-family:"DM Mono",ui-monospace,Menlo,monospace;font-weight:500;font-size:24px;letter-spacing:-.02em}
+.setup{display:grid;gap:0}
+.setup .step{align-items:start;grid-template-columns:36px minmax(0,1fr)}
+.setup .step .txt b{color:var(--txt);font-weight:600}
+.setup .step .txt code,.inline{font-family:"DM Mono",ui-monospace,Menlo,monospace;font-size:.92em;color:var(--lav);background:rgba(124,92,240,.12);border-radius:6px;padding:1px 6px}
+.note{margin:22px 0 0;border:1px solid rgba(232,200,120,.35);border-radius:18px;padding:18px 20px;color:var(--soft);font-size:15.5px}
+.note b{color:var(--gold);font-weight:600}
+.calc{margin-top:16px;display:grid;gap:8px}
+.calc-row{display:grid;grid-template-columns:70px minmax(0,1fr) auto;gap:12px;align-items:center;border-bottom:1px solid var(--line);padding:8px 0}
+.calc-row .n{font-family:"DM Mono",monospace;font-size:13px;color:var(--muted)}
+.calc-row .d{display:flex;align-items:center;gap:8px;color:var(--soft);font-size:15px;flex-wrap:wrap}
+.calc-row input{width:76px;padding:8px 10px;border-radius:10px;background:var(--bg2);color:var(--txt);border:1px solid var(--line2);font-family:"DM Mono",monospace;font-size:15px;text-align:right}
+.calc-row .lands{font-family:"DM Mono",monospace;font-size:14px;color:var(--mint);white-space:nowrap;font-variant-numeric:tabular-nums}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.presets button{font-size:13px;padding:7px 14px}
+.auto{margin-top:26px}
+.auto .kick{font-family:"DM Mono",monospace;font-size:12.5px;letter-spacing:.08em;color:var(--lav);margin:0 0 10px;text-transform:uppercase}
+.auto .job{color:var(--soft);font-size:16.5px;margin:0 0 22px;max-width:660px}
+.msgs{display:grid;gap:14px}
+.msg{border:1px solid var(--line2);border-radius:20px;padding:18px 20px 16px;background:rgba(0,0,0,.12);min-width:0}
+:root[data-theme="light"] .msg{background:var(--surf2)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .msg{background:var(--surf2)}}
+.msg-top{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px}
+.cmd{font-family:"DM Mono",monospace;font-size:14px;color:var(--lav);font-weight:500}
+.chip{font-size:12.5px;color:var(--soft);border:1px solid var(--line2);border-radius:99px;padding:3px 11px;white-space:nowrap}
+.chip.day{color:var(--mint);border-color:rgba(127,224,184,.4);font-family:"DM Mono",monospace}
+.chip.mine{color:var(--gold);border-color:rgba(232,200,120,.4)}
+.chip.tpl{color:var(--pink);border-color:rgba(240,139,176,.4)}
+.msg pre{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font-family:Outfit,system-ui,sans-serif;font-weight:400;font-size:15.5px;line-height:1.6;color:var(--txt);background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.msg .why{color:var(--muted);font-size:14.5px;margin:12px 0 0}
+.msg .row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap;margin-top:12px}
+.msg .row .why{margin:0;flex:1 1 260px;min-width:0}
+.copy{font-family:"DM Mono",monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;color:var(--mint);border-color:var(--line2)}
+.copy:hover{border-color:var(--mint)}
+.yours{margin-top:22px}
+.yours h3{font-size:17px;font-weight:600;margin:0 0 10px}
+.rules{display:grid;gap:0}
+.rule{display:grid;grid-template-columns:minmax(140px,230px) minmax(0,1fr);border-top:1px solid var(--line)}
+.rule:last-child{border-bottom:1px solid var(--line)}
+.rule div{padding:13px 0}
+.rule .k{color:var(--gold);font-size:15px;font-weight:500;padding-right:18px}
+.rule .val{color:var(--soft);font-size:15.5px}
+@media(max-width:560px){.rule{grid-template-columns:1fr}.rule .k{padding-bottom:0}.rule .val{padding-top:4px}.calc-row{grid-template-columns:52px minmax(0,1fr)}.calc-row .lands{grid-column:2}}
+.get{display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;justify-content:space-between}
+.get p{margin:0;color:var(--soft);max-width:520px;font-size:15.5px}
+.get small{display:block;color:var(--muted);font-size:13px;margin-top:6px}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script>
+(function(){
+  var PANDA = 'https://www.skool.com/panda/about?ref=451a693619794ca3b530b58f958d9bdf';
+  var LINK = 'PASTE YOUR LINK';
+
+  /* src: 'mine' = Amanda's live message, word for word (her own links swapped for a placeholder).
+          'tpl'  = a starting template in her voice. */
+  var AUTOS = [
+    { name:'When someone joins', panda:'Member joined · sequence of 4',
+      job:'Four messages over the first month. The first one points to one place to start. The rest check in before they go quiet.',
+      steps:[
+        { cmd:'Welcome1', delay:'Within 15 minutes', day:0, src:'mine',
+          text:'Hiiiiiii #NAME# it\'s Amanda 🤗 welcome to the community I recommend starting with the [start here classroom & quiz]('+LINK+') to help you make the most of the space.\n\nP.S. What made you join spiritual biz skool? 💜',
+          why:'One link, one first step. The P.S. question gets replies, and the answers tell me what people came for in their own words.' },
+        { cmd:'welcome2', delay:'1 day later', day:1, src:'mine',
+          text:'If u have questions or aren\'t clear about the start here process just let me know 🤗',
+          why:'One line. It reads like a text because it is one. This is the message people answer when they were too shy to answer the first.' },
+        { cmd:'welcome3', delay:'14 days later', day:15, src:'mine',
+          text:'Hey #NAME# wanted to personally check in on how everything\'s going for you? 🤗🙏\n\nHere\'s a few ways to get more support\n[🙋 Get Support]('+LINK+')',
+          why:'Two weeks in is when people either find their rhythm or drift. Show them where help lives before they need to ask.' },
+        { cmd:'Welcome30day', delay:'14 days later', day:29, src:'mine',
+          text:'Hey #NAME#, you\'re about a month in now! Is there anything I can help with?\n\nTwo quick things:\n1️⃣ What\'s been the most useful thing so far?\n2️⃣ What\'s one thing you wish we did better or added?\n\nYour opinion matters a lot to me with how I shape the community so don\'t hold back 🙏',
+          why:'Goes out right before their second payment. Question one gives you testimonials. Question two gives you your next classroom.' }
+      ],
+      ideas:[
+        'Small community and you live in your DMs? End every welcome with a question: "What made you join?" or "What\'s the one thing you want help with this month?"',
+        'Only ask what you will answer. A reply that sits unread is worse than no DM at all.',
+        'Bigger community? Skip the question and send them to one resource. Your Start Here, a quiz, the first lesson.',
+        'Pick the classroom by what they need first, not what you made most recently.',
+        'One link per message. Two links and they tap neither.'
+      ] },
+    { name:'When someone upgrades', panda:'Membership upgrade · one per tier',
+      job:'They just paid more. Tell them exactly what opened up and get the calls on their calendar before the excitement wears off.',
+      steps:[
+        { cmd:'premium1', delay:'Within 15 minutes', day:0, src:'mine',
+          text:'#NAME#, saw you just upgraded to Premium - yayyyy for you! 🎉\n\nWhat was it that made you upgrade?\n\nOh! and now that you have access to the Q&A calls & personalized feedback from me to help you implement 🙌\n\n2 things:\n1️⃣ [Add the Q&A calls to your calendar]('+LINK+') they\'re on the 4th Tuesday of every month.\n\n2️⃣ [Submit your questions here]('+LINK+') for personalized feedback from me!\n\nxoxox\n\nP.S. If you have questions in the meantime don\'t hesitate to post them in the community and tag me @AmandaSmith and I\'ll help you get sorted ASAP. 🥰',
+          why:'"What made you upgrade?" is the most useful question in this whole guide. Their answer is your next sales post, in buyer language.' },
+        { cmd:'premium3', delay:'About a month later', day:30, src:'tpl',
+          text:'#NAME# You\'ve been in Premium about a month now! Have you submitted a question for the Q&A call yet?\n\nIf not, here\'s where: [Submit your questions]('+LINK+')\n\nWhat\'s the one thing you want my eyes on? 💜',
+          why:'People stay in a tier they use. This catches the ones who upgraded and never touched the perk.' },
+        { cmd:'VIPupgrade', delay:'Within 15 minutes', day:0, src:'mine',
+          text:'#NAME#, saw you just upgraded to VIP 💖🔥🎉! Woohooo congrats on taking action.\n\nYou just unlocked access to the VIP group coaching calls & ever expanding tools vault\n\nMake sure you add the [VIP group coaching calls to your calendar]('+LINK+')\n\nThey\'re the first 3 Tuesdays of every month. Bring your ads, offers, content, artifacts, skool. Whatever you need help with and get it fixed live on the call.\n\n[Access the replays + VIP tools vault here]('+LINK+')\n\nCan\'t wait to see your growth.\n\nPlease don\'t hesitate to post ANY questions in the community & tag me if you get stuck. That\'s what I\'m here for. 😁🥰',
+          why:'Calendar first, then what to bring, then the vault. In that order, because a perk they never show up for is a perk they cancel.' }
+      ],
+      ideas:[
+        'If the tier comes with calls, the calendar link goes first. Say the day they happen in plain words.',
+        'Tell them what to bring. "Bring your offer" gets more people on a call than "join us live".',
+        'If the tier comes with a vault, a course or a perk, link the one thing to open first.',
+        'Write a separate message for each tier. A VIP should never get the Premium welcome.'
+      ] },
+    { name:'When a card declines', panda:'Card declined · sequence of 3',
+      job:'Most failed payments are an expired card, not a goodbye. Three messages, each one shorter on patience and just as kind.',
+      steps:[
+        { cmd:'Declined1', delay:'Within 15 minutes', day:0, src:'mine',
+          text:'Hey #NAME#! 👋 Quick heads-up your latest payment for the community didn\'t go through. It happens all the time (expired card, bank hold, etc.) and only takes a few seconds to fix in your membership settings. Just didn\'t want you to lose your spot 🙂\n\nThe good news? It\'s a 10-second fix 💕\n\n👉 Tap your profile pic\n→ Settings\n→ Payment Methods\n→ update your card\n\nOnce it\'s updated you\'re right back in! nothing lost.\n\nIf you have any questions, just reply here and I\'ve got you 💜',
+          why:'Assumes it was an accident, and gives the exact taps. Nobody has to go looking for where to fix it.' },
+        { cmd:'Declined2', delay:'3 days later', day:3, src:'mine',
+          text:'Hi #NAME#, following up on the payment that didn\'t clear. Updating your card in your membership settings retries it automatically. Here to help if anything\'s tricky. 🤗\n\nDon\'t want you to miss out!',
+          why:'Short. No steps repeated. It only has to bring the first message back to the top of their inbox.' },
+        { cmd:'Declined3', delay:'7 days later', day:10, src:'mine',
+          text:'Last heads up #NAME# access ends soon if the payment doesn\'t go through. Would hate for you to lose your spot after all this. Takes about 30 seconds in your membership settings 🙏\n\n👉 Tap your profile pic\n→ Settings\n→ Payment Methods\n→ update your card\nOnce it\'s updated you\'re right back in! nothing lost.\n\nIf you have any questions, just reply here and I\'ve got you 💜',
+          why:'Says it\'s the last one, so it is. The steps come back because this is the message they act on.' }
+      ],
+      ideas:[
+        'Never make them feel caught. "It happens all the time" keeps the door open.',
+        'If your price went up since they joined, say their rate is safe once the card is updated.',
+        'Three is enough. After the third, let the "left" message do its job.'
+      ] },
+    { name:'When someone cancels', panda:'Cancelling · single DM',
+      job:'They hit cancel but they\'re still a member until their billing date. This is the one window where a real conversation can change the outcome.',
+      steps:[
+        { cmd:'leaving', delay:'Within 15 minutes', day:0, src:'tpl',
+          text:'Hey #NAME#, just saw you canceled your membership and wanted to check in.\n\nNo hard feelings at all. Was it timing, budget, or something we could\'ve done better?\n\nOne honest sentence helps me a lot. 🙏\n\nYou still have full access until your billing date, so grab anything you want from the classroom before then. 💜',
+          why:'No guilt and no discount. You\'re asking for the reason, because the reason is what fixes the next ten cancellations.' }
+      ],
+      ideas:[
+        'If you have a lower tier, mention it: "If it\'s budget, you can drop to Standard and keep your spot."',
+        'If they say they never had time to use it, send the one lesson that takes ten minutes.',
+        'Reply to every answer yourself. This is not the place for a second automation.'
+      ] },
+    { name:'When someone has left', panda:'Member left · single DM',
+      job:'Cancelling means they\'re on the way out. Left means they\'re gone. Different moment, different message.',
+      steps:[
+        { cmd:'left', delay:'Within 15 minutes', day:0, src:'mine',
+          text:'Hey #NAME#, looks like your Spiritual Business Skool membership lapsed & I just wanted to check in.\n\nIf it was intentional, totally respect it, I would just love to know what we could\'ve done better.\n\nOne honest sentence means a lot. 🥰\n\nAnd if timing or budget was the issue and you want back in down the road, just reply here and I\'ll sort you out. 💜',
+          why:'"Lapsed" covers both the person who left on purpose and the one whose card quietly failed. The last line leaves the door open without chasing.' }
+      ],
+      ideas:[
+        'Ask for one sentence, not a survey. One sentence gets answered.',
+        'The whole point isn\'t for people to stay forever. Say goodbye the way you\'d want to be remembered.'
+      ] }
+  ];
+
+  var EXTRA = [
+    { cmd:'downgrade', delay:'Fire it by hand', src:'tpl',
+      text:'Hey #NAME#, saw you just downgraded your membership. Totally get it.\n\nYou still have [what stays at their tier].\n\nCan I ask what made you switch? If something was missing, I\'d love to know. 🙏',
+      why:'Leave "Hide from / menu" unticked, then type / in the chat with that member and pick it.' },
+    { cmd:'trialending', delay:'If you run a free trial', src:'tpl',
+      text:'Hey #NAME#, saw that your trial is about to end and wanted to check in.\n\nWhat\'s been the most useful thing so far?\n\nIf there\'s something you wanted to see before deciding, tell me and I\'ll point you to it. 🤗',
+      why:'Send it two days before the trial ends, while there\'s still time to show them the thing they came for.' }
+  ];
+
+  var SETUP = [
+    ['Open Panda and go to your slash commands.', 'Tap <b>+ New Command</b>. Every automated DM starts as a command.'],
+    ['Name the trigger.', 'One word, no spaces, like <code>Welcome1</code>. If it\'s a sequence, number them: <code>Declined1</code>, <code>Declined2</code>, <code>Declined3</code>.'],
+    ['Write the message.', 'Type <code>#NAME#</code> wherever their first name goes. A hashtag on both sides, or it sends as the literal word. Use the link button for links and the B button for the one line you most want read.'],
+    ['Decide who can see it.', 'Tick <b>Hide from / menu</b> if it only ever sends automatically. Leave it unticked if you also want to fire it by hand by typing / in a chat.'],
+    ['Open Your automations and pick the moment.', 'Member joined, membership upgrade, cancelling, member left, or card declined. Choose your command as the 1st DM and set it to send within 15 minutes.'],
+    ['Make it a sequence, or don\'t.', 'Tap <b>+ Add DM</b> for each follow-up, up to 7, and set how long after the previous DM it sends.'],
+    ['Send yourself the first one.', 'Join or message from a second account and read it on your phone. If it sounds like a sales page, rewrite it.']
+  ];
+
+  var RULES = [
+    ['One job per message', 'One link, one question, or one step. Pick.'],
+    ['Ask only what you\'ll answer', 'Automate the first message. Answer the replies yourself.'],
+    ['Write it like a text', 'Lowercase, emoji, a typo you leave in. It should read like you sent it between two other things.'],
+    ['Check every #NAME#', 'Both hashtags. Open each command and look before you switch the automation on.'],
+    ['Re-read them when anything changes', 'New price, new call day, a perk you retired. An automation keeps sending the old promise until you change it.'],
+    ['Never sell in the welcome', 'They just bought. The welcome sequence is for getting them a win. The upgrade conversation comes after the win.']
+  ];
+
+  var MORE = [
+    { t:'Tag a whole tier in one post', p:['Start a new post, type @ and wait for the dropdown.', 'Pick Standard, Premium, VIP or everyone. Panda adds the tags for you.'], tags:['Tier announcements','Call reminders'] },
+    { t:'Reach everyone between broadcasts', p:['Skool only lets you push a post out to all members once every 72 hours.', 'When something can\'t wait: tag every member, publish, then delete the tags straight away. The notification still goes out and the post stays clean.', 'Save it for things they\'d be upset to miss.'], tags:['Use sparingly'] },
+    { t:'Schedule posts, or park them as drafts', p:['Write the week in one sitting and schedule it.', 'Not sure when it should go out? Save it as a draft and decide later.'], tags:['Batch day'] },
+    { t:'See your numbers', p:['Panda tracks what comes in and what goes out, so you can see what you actually kept.'], tags:['Money date'] }
+  ];
+
+  function el(tag, cls, text){var e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e;}
+  function card(extra){return el('div','card'+(extra?' '+extra:''));}
+  function head(c,title,sub){c.appendChild(el('h2','sec-title',title)); if(sub) c.appendChild(el('p','sec-sub',sub));}
+  function sec(c){var s=el('section'); s.appendChild(c); return s;}
+  function dots(items){var ul=el('ul','dots'); items.forEach(function(t){ul.appendChild(el('li',null,t));}); return ul;}
+  function ext(label,url,cls){var a=el('a',cls||null,label); a.href=url; a.target='_blank'; a.rel='noopener'; return a;}
+  function copyBtn(text){
+    var b=el('button','copy','Copy');
+    b.onclick=function(){
+      function ok(){b.textContent='Copied'; setTimeout(function(){b.textContent='Copy';},1600);}
+      function fallback(){try{var ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok();}catch(e){}}
+      try{navigator.clipboard.writeText(text).then(ok).catch(fallback);}catch(e){fallback();}
+    };
+    return b;
+  }
+  function msg(m){
+    var b=el('div','msg');
+    var top=el('div','msg-top');
+    top.appendChild(el('span','cmd','/'+m.cmd));
+    top.appendChild(el('span','chip',m.delay));
+    if(m.day!=null) top.appendChild(el('span','chip day','lands day '+m.day));
+    top.appendChild(el('span','chip '+(m.src==='mine'?'mine':'tpl'), m.src==='mine'?'Mine, word for word':'Template'));
+    b.appendChild(top);
+    b.appendChild(el('pre',null,m.text));
+    var row=el('div','row'); row.appendChild(el('p','why',m.why)); row.appendChild(copyBtn(m.text)); b.appendChild(row);
+    return b;
+  }
+
+  var app=document.getElementById('app');
+
+  // hero
+  var hero=el('header','hero');
+  hero.appendChild(el('p','who','Spiritual Business Skool / Panda for Skool'));
+  var h1=el('h1'); h1.appendChild(document.createTextNode('Your DM ')); h1.appendChild(el('span','serif','Automations Guide')); hero.appendChild(h1);
+  hero.appendChild(el('p','desc','The five automated DMs I run in my Skool: the exact messages, when each one sends, and how to make them sound like you.'));
+  hero.appendChild(el('p','prep','Prepared by Amanda, Spiritual Business Skool. What to send when someone joins, upgrades, cancels, leaves, or their card declines.'));
+  var cta=el('div','cta'); cta.appendChild(ext('Get Panda',PANDA,'btn')); cta.appendChild(el('small',null,'My affiliate link. Panda is the Chrome extension I pay for and use every day. It works on Hobby and Pro.')); hero.appendChild(cta);
+  app.appendChild(hero);
+
+  // snapshot
+  var sc=card(); head(sc,'Snapshot','What\'s running in my community right now.');
+  var grid=el('div','stats');
+  [['5','Moments that send a DM on their own'],['15 min','How fast the first message lands'],['7','The most DMs one sequence can hold'],['#NAME#','Turns into their first name','mono'],['4','Messages in my welcome sequence'],['3','Messages when a card declines']].forEach(function(x){
+    var b=el('div','stat'); b.appendChild(el('div','v'+(x[2]?' '+x[2]:''),x[0])); b.appendChild(el('div','l',x[1])); grid.appendChild(b);});
+  sc.appendChild(grid); app.appendChild(sec(sc));
+
+  // setup
+  var st=card(); head(st,'Set it up once','Seven steps. About twenty minutes for your first sequence.');
+  var list=el('div','setup');
+  SETUP.forEach(function(s,i){var row=el('div','step'); row.appendChild(el('div','num',String(i+1)));
+    var t=el('div','txt'); var b=el('b',null,s[0]); t.appendChild(b); t.appendChild(document.createTextNode(' ')); var sp=el('span'); sp.innerHTML=s[1]; t.appendChild(sp); row.appendChild(t); list.appendChild(row);});
+  st.appendChild(list);
+  var nt=el('p','note'); nt.innerHTML='<b>Delays stack.</b> Each delay counts from the DM before it, not from the day they joined. 1 day, then 14 days, then 30 days lands your last message around day 45. If that message says "you\'re about a month in", set the last delay to 14 days so it lands on day 29.';
+  st.appendChild(nt);
+  app.appendChild(sec(st));
+
+  // delay math
+  var dc=card(); head(dc,'Check your timing','Type the delay for each DM and see the day it actually lands.');
+  var calc=el('div','calc'); dc.appendChild(calc);
+  var delays=[1,14,14];
+  function drawCalc(){
+    calc.textContent='';
+    var r0=el('div','calc-row'); r0.appendChild(el('span','n','DM 1')); r0.appendChild(el('span','d','Within 15 minutes')); r0.appendChild(el('span','lands','day 0')); calc.appendChild(r0);
+    var total=0;
+    delays.forEach(function(d,i){
+      total+=d;
+      var r=el('div','calc-row'); r.appendChild(el('span','n','DM '+(i+2)));
+      var dd=el('label','d'); dd.htmlFor='delay-'+i; var inp=el('input'); inp.type='number'; inp.min='0'; inp.max='365'; inp.id='delay-'+i; inp.value=d; inp.setAttribute('inputmode','numeric');
+      inp.onchange=function(){delays[i]=Math.max(0,Math.min(365,parseInt(inp.value||'0',10)||0)); drawCalc();};
+      dd.appendChild(inp); dd.appendChild(document.createTextNode(d===1?'day after the DM before it':'days after the DM before it')); r.appendChild(dd);
+      r.appendChild(el('span','lands','day '+total)); calc.appendChild(r);
+    });
+  }
+  drawCalc();
+  var pre=el('div','presets');
+  [['My welcome sequence',[1,14,14]],['My card declined sequence',[3,7]],['Add a DM',null],['Remove one',false]].forEach(function(p){
+    var b=el('button',null,p[0]); b.onclick=function(){
+      if(p[1]===null){ if(delays.length<6) delays.push(7); }
+      else if(p[1]===false){ if(delays.length>1) delays.pop(); }
+      else delays=p[1].slice();
+      drawCalc(); };
+    pre.appendChild(b);});
+  dc.appendChild(pre); app.appendChild(sec(dc));
+
+  // the five
+  AUTOS.forEach(function(a,i){
+    var c=card(); c.appendChild(el('p','kick',a.panda)); head(c,a.name); c.appendChild(el('p','job',a.job));
+    var ms=el('div','msgs'); a.steps.forEach(function(m){ms.appendChild(msg(m));}); c.appendChild(ms);
+    var y=el('div','yours'); y.appendChild(el('h3',null,'Make it yours')); y.appendChild(dots(a.ideas)); c.appendChild(y);
+    app.appendChild(sec(c));
+  });
+
+  // two more
+  var ex=card(); head(ex,'Two more worth having','Not every message needs a trigger. Save these as commands and send them when the moment comes.');
+  var em=el('div','msgs'); EXTRA.forEach(function(m){em.appendChild(msg(m));}); ex.appendChild(em); app.appendChild(sec(ex));
+
+  // rules
+  var rc=card('bottleneck'); head(rc,'The rules I\'d keep');
+  rc.appendChild(el('p','verdict','Automate the first message. Answer the replies yourself.'));
+  var rl=el('div','rules'); RULES.forEach(function(r){var row=el('div','rule'); row.appendChild(el('div','k',r[0])); row.appendChild(el('div','val',r[1])); rl.appendChild(row);}); rc.appendChild(rl);
+  app.appendChild(sec(rc));
+
+  // more panda
+  var mc=card(); head(mc,'What else I use Panda for','DMs are the reason I got it. These are the reasons I kept it.');
+  var mv=el('div','moves');
+  MORE.forEach(function(m,i){var row=el('div','move'); row.appendChild(el('div','n',String(i+1)));
+    var body=el('div'); body.appendChild(el('h3',null,m.t)); body.appendChild(dots(m.p));
+    var tg=el('div','tags'); m.tags.forEach(function(t){tg.appendChild(el('span','tag',t));}); body.appendChild(tg);
+    row.appendChild(body); mv.appendChild(row);});
+  mc.appendChild(mv); app.appendChild(sec(mc));
+
+  // get panda
+  var gc=card(); var g=el('div','get'); var gp=el('p',null,'Everything in this guide runs on Panda, next to your Skool.');
+  gp.appendChild(el('small',null,'This is my affiliate link, so I earn a commission if you join through it. Panda is an independent tool and isn\'t part of Skool.'));
+  g.appendChild(gp); g.appendChild(ext('Get Panda',PANDA,'btn')); gc.appendChild(g); app.appendChild(sec(gc));
+
+  app.appendChild(el('p','sign','xoxo, Amanda 💜'));
+})();
+</script>
+</body>
+</html>

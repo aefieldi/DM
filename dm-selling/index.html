@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The DM Selling Guide</title>
+<meta name="description" content="For readers, healers and astrologers: what to say in the DMs after someone comments your keyword, from the free resource to a booked session.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Single night-sky theme, painted explicitly. Same system as the client call playbooks. */
+:root{
+  --bg:#0d0c19; --card:#1c1a2f; --card-2:#24203b; --line:#35304f; --line-soft:#26223c;
+  --text:#f0ebf8; --muted:#b0aac6; --dim:#8d87ad;
+  --lav:#b89bf0; --orchid:#e2a6de; --gold:#d9c06c; --mint:#7fdfc3; --pink:#e6a2e2;
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --mono:"DM Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  color-scheme:dark;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px);background:var(--bg)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);background-image:radial-gradient(1100px 620px at -5% -10%,#221a3c 0%,transparent 62%);color:var(--text);font-family:var(--sans);font-size:17px;font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit;color:inherit}
+h1,h2,h3,h4{text-wrap:balance}
+:focus-visible{outline:2px solid var(--mint);outline-offset:3px;border-radius:12px}
+img{max-width:100%}
+a{color:var(--mint)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.12fr .88fr;gap:56px;max-width:1240px;margin:0 auto;padding:44px 32px 64px;align-items:center}
+.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.32em;color:var(--pink);text-transform:uppercase;margin:0}
+h1{font-weight:800;font-size:clamp(48px,8vw,104px);line-height:.95;letter-spacing:-.035em;margin:28px 0 0}
+.script{display:block;font-family:var(--serif);font-style:italic;font-weight:600;letter-spacing:-.01em;background:linear-gradient(90deg,var(--lav),var(--orchid));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.08;padding-bottom:.08em}
+.tagline{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--gold);font-size:clamp(28px,3.4vw,42px);margin:26px 0 16px;line-height:1.2}
+.lede{font-size:clamp(18px,1.7vw,22px);color:var(--muted);max-width:42ch;line-height:1.75;margin:0}
+.sig{margin-top:28px;font-size:16px;color:var(--dim);max-width:52ch}
+.sig b{color:var(--text);font-weight:600}
+.btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.btn{font-weight:500;font-size:18px;border-radius:999px;padding:17px 30px;cursor:pointer;border:1px solid var(--line);background:transparent;text-decoration:none;color:var(--text);display:inline-block}
+.btn-primary{background:#ece7f6;color:#14112a;border-color:#ece7f6}
+.btn-ghost:hover{border-color:var(--lav)}
+.stack{display:flex;flex-direction:column;align-items:center;gap:22px}
+.stack-label{font-family:var(--mono);letter-spacing:.3em;font-size:13px;color:var(--dim);text-transform:uppercase;text-align:center;margin:0}
+.stack-label.end{color:var(--mint)}
+.stage-card{display:flex;justify-content:space-between;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:20px 28px;text-align:left;cursor:pointer;transition:border-color .2s}
+.stage-card:hover{border-color:var(--lav)}
+.stage-card .n{font-family:var(--mono);color:var(--dim);font-size:15px;display:block}
+.stage-card .t{font-size:22px;font-weight:600;display:block;line-height:1.3}
+.stage-card .tag{font-family:var(--mono);color:var(--mint);letter-spacing:.14em;font-size:14px;white-space:nowrap}
+.w1{width:100%}.w2{width:92%}.w3{width:84%}.w4{width:76%}
+.connector{height:36px;border-left:1px dashed var(--line)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(13,12,25,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.nav-in{max-width:1240px;margin:0 auto;padding:10px 24px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.nav-in::-webkit-scrollbar{display:none}
+.pill{font-size:15px;font-weight:500;padding:10px 18px;border-radius:999px;border:1px solid transparent;background:none;color:var(--muted);white-space:nowrap;cursor:pointer}
+.pill:hover{color:var(--text)}
+.pill.on{background:var(--card-2);border-color:var(--line);color:var(--text)}
+
+/* main */
+.main{max-width:1240px;margin:0 auto;padding:52px 32px 110px}
+h2{font-weight:700;font-size:clamp(34px,4.6vw,58px);letter-spacing:-.03em;line-height:1.02;margin:14px 0 14px}
+h2 .script{display:inline}
+.sub{color:var(--muted);font-size:19px;max-width:64ch;margin:0 0 36px}
+.label{font-family:var(--mono);letter-spacing:.24em;font-size:13px;text-transform:uppercase;margin:0}
+.label.mint{color:var(--mint)} .label.pink{color:var(--pink)} .label.gold{color:var(--gold)} .label.dim{color:var(--dim)}
+
+/* setup */
+.setup{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.form{display:grid;gap:18px}
+.field{display:grid;gap:7px}
+.field input,.field textarea,.field select{font-weight:400;font-size:17px;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;width:100%}
+.field textarea{min-height:104px;resize:vertical;line-height:1.5}
+.field input:focus,.field textarea:focus,.field select:focus{outline:2px solid var(--mint);outline-offset:1px;border-color:transparent}
+.field small{color:var(--dim);font-size:14px;line-height:1.45}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.preview{position:sticky;top:calc(env(safe-area-inset-top,0px) + 84px);background:var(--card);border:1px solid var(--line);border-radius:26px;padding:28px}
+.badge{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;border-radius:999px;padding:6px 12px;border:1px solid rgba(217,192,108,.5);color:var(--gold);margin-bottom:16px}
+.badge.ok{border-color:rgba(127,223,195,.5);color:var(--mint)}
+.preview .facts{margin:20px 0 0;padding:18px 0 0;border-top:1px solid var(--line-soft);display:grid;gap:8px;color:var(--muted);font-size:16px}
+.preview .facts b{color:var(--text);font-weight:600;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.preview .row-btns{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:20px}
+
+/* score your last call */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.tick{display:flex;gap:16px;align-items:flex-start;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px 22px;margin-top:14px;cursor:pointer;transition:border-color .2s}
+.tick:hover{border-color:var(--lav)}
+.tick .box{flex:none;width:22px;height:22px;border-radius:7px;border:1.5px solid var(--dim);margin-top:4px;position:relative}
+.tick[aria-pressed="true"] .box::after{content:"";position:absolute;left:7px;top:2px;width:6px;height:12px;border-right:2px solid #14112a;border-bottom:2px solid #14112a;transform:rotate(42deg)}
+.tick.leak[aria-pressed="true"]{border-color:rgba(230,162,226,.6)}
+.tick.leak[aria-pressed="true"] .box{background:var(--pink);border-color:var(--pink)}
+.tick.keep[aria-pressed="true"]{border-color:rgba(127,223,195,.6)}
+.tick.keep[aria-pressed="true"] .box{background:var(--mint);border-color:var(--mint)}
+.tick h3{font-size:20px;font-weight:600;margin:0 0 6px;line-height:1.35}
+.tick p{margin:0;color:var(--muted);font-size:17px}
+.q{font-family:var(--serif);font-style:italic;font-weight:500;font-size:21px;color:var(--text)}
+.verdict{margin-top:28px;background:var(--card-2);border:1px solid var(--line);border-radius:22px;padding:24px 26px}
+.verdict .v{font-family:var(--mono);font-size:34px;margin:8px 0 6px;font-variant-numeric:tabular-nums}
+.verdict p{margin:0;color:var(--muted)}
+.receipt{margin:0 0 30px;border-left:2px solid var(--gold);padding:4px 0 4px 20px;color:var(--muted);max-width:64ch}
+.receipt b{color:var(--text);font-weight:600}
+
+.callout{margin-top:40px;border:1px solid rgba(217,192,108,.45);background:linear-gradient(135deg,rgba(217,192,108,.08),rgba(184,155,240,.06));border-radius:28px;padding:34px 36px}
+.callout .big{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(26px,3vw,36px);color:var(--gold);line-height:1.3;margin:12px 0 10px}
+.callout p{color:var(--muted);margin:0;font-size:17px}
+
+.scripts{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.script-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px 26px;display:flex;flex-direction:column}
+.say{font-family:var(--serif);font-style:italic;font-weight:500;font-size:23px;line-height:1.4;color:var(--text);margin:12px 0 12px}
+.note{color:var(--dim);font-size:15px;margin:0 0 16px}
+.copy{align-self:flex-start;margin-top:auto;font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);background:transparent;border-radius:999px;padding:8px 16px;cursor:pointer;color:var(--mint)}
+.copy:hover{border-color:var(--mint)}
+.linkish{font-size:14px;color:var(--dim);background:none;border:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:0}
+
+/* timer */
+.timer-wrap{display:grid;grid-template-columns:370px 1fr;gap:28px;align-items:start}
+.panel{position:sticky;top:calc(env(safe-area-inset-top,0px) + 84px);background:var(--card);border:1px solid var(--line);border-radius:26px;padding:26px}
+.clock{font-family:var(--mono);font-size:72px;line-height:1;letter-spacing:-.02em;margin:10px 0 4px;font-variant-numeric:tabular-nums}
+.clock.over{color:var(--pink)}
+.of{font-family:var(--mono);color:var(--dim);font-size:14px;letter-spacing:.1em}
+.bar{position:relative;height:10px;border-radius:999px;background:var(--line-soft);margin:20px 0 34px}
+.bar-fill{position:absolute;inset:0 auto 0 0;border-radius:999px;background:linear-gradient(90deg,var(--lav),var(--mint))}
+.tickmark{position:absolute;top:-3px;width:1px;height:16px;background:var(--line)}
+.soft{position:absolute;top:-8px;width:2px;height:26px;background:var(--gold)}
+.soft span{position:absolute;top:28px;right:-4px;font-family:var(--mono);font-size:11px;color:var(--gold);white-space:nowrap;letter-spacing:.08em}
+.controls{display:flex;gap:10px;flex-wrap:wrap}
+.ctl{font-weight:500;font-size:16px;border-radius:999px;padding:12px 22px;cursor:pointer;border:1px solid var(--line);background:transparent}
+.ctl.go{background:#ece7f6;color:#14112a;border-color:#ece7f6}
+.now{margin-top:24px;padding-top:22px;border-top:1px solid var(--line-soft)}
+.now h4{font-size:24px;font-weight:600;margin:8px 0 2px;line-height:1.25}
+.now .left{font-family:var(--mono);font-size:13px;color:var(--dim);letter-spacing:.08em}
+.now .say{font-size:21px;margin:14px 0 0}
+.stages{display:flex;flex-direction:column;gap:12px}
+.stage{border:1px solid var(--line);border-radius:20px;background:var(--card);transition:border-color .2s}
+.stage.cur{border-color:var(--mint);box-shadow:inset 0 0 0 1px var(--mint)}
+.stage-head{width:100%;display:grid;grid-template-columns:128px 1fr auto;gap:14px;align-items:center;background:none;border:0;padding:18px 22px;cursor:pointer;text-align:left}
+.stage-time{font-family:var(--mono);font-size:14px;color:var(--dim);font-variant-numeric:tabular-nums}
+.stage.cur .stage-time{color:var(--mint)}
+.stage-title{font-size:19px;font-weight:600}
+.stage.past .stage-title{color:var(--dim)}
+.chev{font-family:var(--mono);color:var(--dim);font-size:18px}
+.stage-body{padding:0 22px 22px 164px}
+.stage-body .goal{color:var(--muted);margin:0 0 6px;font-size:17px}
+.lines{margin:12px 0 0;padding:0;list-style:none}
+.lines li{font-family:var(--serif);font-style:italic;font-weight:500;font-size:21px;line-height:1.45;padding:10px 0 10px 18px;border-left:2px solid var(--lav);margin-bottom:10px}
+.lines li.dir{font-family:var(--sans);font-style:normal;font-weight:400;font-size:15px;color:var(--dim);border-left-color:var(--line)}
+.avoid{margin:12px 0 0;color:var(--pink);font-size:15px}
+.avoid b{font-weight:600}
+.follow{margin-top:14px;font-size:14px;color:var(--mint);background:none;border:0;cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:3px;align-self:flex-start}
+
+.length{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;margin:0 0 28px;padding:16px 20px;border:1px solid var(--line);border-radius:20px;background:var(--card)}
+.length .label{margin-right:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:14px;border:1px solid var(--line);background:transparent;border-radius:999px;padding:8px 14px;cursor:pointer;font-variant-numeric:tabular-nums}
+.chip:hover{border-color:var(--lav)}
+.chip.on{background:#ece7f6;color:#14112a;border-color:#ece7f6}
+.length .own{display:flex;align-items:center;gap:8px;color:var(--dim);font-size:15px}
+.length input{width:84px;font-family:var(--mono);font-size:16px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:8px 10px;color:var(--text);text-align:right}
+.length input:focus{outline:2px solid var(--mint);outline-offset:1px;border-color:transparent}
+.qgroups{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.qgroup{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px 26px;display:flex;flex-direction:column}
+.qgroup .when{color:var(--dim);font-size:15px;margin:6px 0 4px}
+.qgroup ul{list-style:none;margin:8px 0 18px;padding:0}
+.qgroup li{font-family:var(--serif);font-style:italic;font-weight:500;font-size:21px;line-height:1.4;padding:10px 0 10px 18px;border-left:2px solid var(--lav);margin-bottom:8px}
+
+/* tracker */
+.logs{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.log{border-radius:18px;border:1px solid var(--line);background:var(--card);padding:16px 20px;cursor:pointer;text-align:left;min-width:200px;flex:1}
+.log:hover{border-color:var(--lav)}
+.log b{display:block;font-weight:600;font-size:17px}
+.log span{color:var(--dim);font-size:14px}
+.log.win{border-color:rgba(127,223,195,.5)}
+.counters{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.counter{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px}
+.counter .v{font-family:var(--mono);font-size:44px;line-height:1.1;margin:8px 0 12px;font-variant-numeric:tabular-nums}
+.counter input{width:100%;font-family:var(--mono);font-size:40px;background:transparent;border:0;border-bottom:1px dashed var(--line);color:var(--text);padding:0 0 4px;margin:8px 0 12px}
+.pm{display:flex;gap:8px}
+.pm button{flex:1;border:1px solid var(--line);background:transparent;border-radius:999px;padding:6px 0;cursor:pointer;font-family:var(--mono)}
+.stats{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:14px;margin-top:14px}
+.stat{background:var(--card-2);border:1px solid var(--line);border-radius:20px;padding:22px}
+.stat .v{font-family:var(--mono);font-size:34px;margin:8px 0 4px;font-variant-numeric:tabular-nums}
+.stat p{margin:0;color:var(--dim);font-size:14px}
+.meter{position:relative;height:8px;border-radius:999px;background:var(--line-soft);margin:14px 0 26px}
+.meter i{position:absolute;inset:0 auto 0 0;border-radius:999px}
+.meter .mark{position:absolute;top:-5px;width:2px;height:18px;background:var(--gold)}
+.meter .mark span{position:absolute;top:20px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:11px;color:var(--gold);white-space:nowrap}
+.reset{margin-top:22px}
+
+/* forward */
+.block{margin-top:44px}
+.block h3{font-size:28px;font-weight:600;letter-spacing:-.02em;margin:10px 0 10px;line-height:1.2}
+.block > p{color:var(--muted);font-size:18px;max-width:64ch;margin:0 0 18px}
+.goal-line{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(24px,2.8vw,32px);color:var(--gold);line-height:1.35;margin:10px 0 0;max-width:40ch}
+.doors{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.door{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px}
+.door h4{font-size:21px;font-weight:600;margin:6px 0 6px}
+.door p{margin:0;color:var(--muted)}
+.flow{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.flow li{display:grid;grid-template-columns:130px 1fr;gap:18px;padding:16px 22px;border-top:1px solid var(--line-soft);background:var(--card)}
+.flow li:first-child{border-top:0}
+.flow .tm{font-family:var(--mono);font-size:14px;color:var(--mint);padding-top:2px;font-variant-numeric:tabular-nums}
+.flow b{font-weight:600;display:block}
+.flow span{color:var(--muted);font-size:16px}
+.qs{margin:0;padding:0;list-style:none;counter-reset:q}
+.qs li{counter-increment:q;display:grid;grid-template-columns:44px 1fr;gap:10px;padding:14px 0;border-top:1px solid var(--line-soft);font-size:18px}
+.qs li::before{content:counter(q,decimal-leading-zero);font-family:var(--mono);color:var(--dim);font-size:14px;padding-top:4px}
+.qs em{color:var(--dim);font-style:normal;font-size:15px;display:block}
+.help{margin-top:72px;border:1px solid var(--line);border-radius:28px;padding:34px 36px;background:linear-gradient(140deg,rgba(184,155,240,.14),rgba(28,26,47,.8) 55%,rgba(127,223,195,.08))}
+.help h3{font-size:28px;font-weight:600;letter-spacing:-.02em;margin:10px 0 10px;line-height:1.2}
+.help p{color:var(--muted);max-width:60ch;margin:0 0 22px}
+.signoff{margin-top:56px;font-family:var(--serif);font-style:italic;font-weight:500;font-size:32px;color:var(--gold)}
+
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr;gap:44px;padding:28px 22px 48px}
+  .timer-wrap,.setup{grid-template-columns:1fr}
+  .panel,.preview{position:relative;top:0}
+  .counters{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  .main{padding:40px 20px 90px}
+  .cols,.scripts,.doors,.row2,.qgroups{grid-template-columns:1fr}
+  .w1,.w2,.w3,.w4{width:100%}
+  .stage-card{padding:18px 22px}
+  .stage-head{grid-template-columns:1fr auto;padding:16px 18px}
+  .stage-time{grid-column:1/-1}
+  .stage-body{padding:0 18px 20px}
+  .flow li{grid-template-columns:1fr;gap:4px}
+  .clock{font-size:60px}
+  .nav-in{padding:10px 14px}
+  .callout,.help{padding:26px 22px}
+}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important;scroll-behavior:auto!important} }
+
+/* ---- DM guide additions ---- */
+.doors3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.apq{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:18px}
+.apq .door .letter{font-family:var(--serif);font-style:italic;font-weight:600;font-size:64px;line-height:.9;display:block;margin-bottom:8px}
+.apq .a .letter{color:var(--mint)} .apq .p .letter{color:var(--lav)} .apq .q3 .letter{color:var(--gold)}
+.chat{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:26px 28px;display:grid;gap:14px;max-width:820px}
+.bub{border-radius:20px;padding:14px 18px;font-size:18px;line-height:1.5;max-width:88%}
+.bub.them{background:var(--card-2);border:1px solid var(--line);color:var(--muted);justify-self:start}
+.bub.you{background:rgba(184,155,240,.12);border:1px solid rgba(184,155,240,.4);justify-self:end}
+.bub .who{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+.bub mark{background:none;color:inherit;border-bottom:2px solid;padding-bottom:1px}
+.bub mark.a{border-color:var(--mint)} .bub mark.p{border-color:var(--lav)} .bub mark.q3{border-color:var(--gold)}
+.key{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.key i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
+.stage-tag{font-family:var(--mono);font-size:13px;color:var(--dim);letter-spacing:.1em;text-transform:uppercase}
+.stage.cur .stage-tag{color:var(--mint)}
+.stage-body .copy{margin-top:14px}
+.stage-foot{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:14px}
+.stage-foot .copy{margin-top:0}
+.stats2{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.kw{font-family:var(--mono);color:var(--mint);font-style:normal;letter-spacing:.04em}
+@media (max-width:980px){ .stats2{grid-template-columns:1fr} }
+@media (max-width:720px){ .doors3,.apq{grid-template-columns:1fr} .bub{max-width:100%} .chat{padding:20px} .stage-tag{grid-column:1/-1} }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/htm@3.1.1/dist/htm.umd.js"></script>
+<script>
+const { useState, useEffect } = React;
+const html = htm.bind(React.createElement);
+
+const AUDIT_LINK = "https://cal.com/amanda-fielding-smith-ljdz7y/strategy-audit-open";
+
+const store = {
+  get(k, d){ try{ const v = localStorage.getItem('dm-guide:'+k); return v == null ? d : JSON.parse(v); }catch(e){ return d; } },
+  set(k, v){ try{ localStorage.setItem('dm-guide:'+k, JSON.stringify(v)); }catch(e){} }
+};
+const reduceMotion = () => { try{ return window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } };
+
+/* ---------- their setup: an example until they replace it ---------- */
+const EXAMPLE = {
+  role: "astrologer",
+  topic: "your Saturn return",
+  freebie: "The Saturn Return Survival Guide",
+  keyword: "SATURN",
+  offer: "a 60-minute birth chart reading",
+  session: "reading",
+  price: 150,
+  start: "this week",
+  edited: false
+};
+
+const money = (n) => '$' + (Number(n) || 0).toLocaleString('en-US');
+const an = (w) => (/^[aeiou]/i.test((w || '').trim()) ? 'an ' : 'a ') + (w || '').trim();
+const clean = (s, d) => ((s || '').trim() || d);
+
+function lines(c){
+  const role = clean(c.role, 'reader');
+  const topic = clean(c.topic, 'this');
+  const freebie = clean(c.freebie, 'the guide');
+  const KEY = clean(c.keyword, 'GUIDE').toUpperCase();
+  const offer = clean(c.offer, 'a session with me');
+  const S = clean(c.session, 'session').toLowerCase();
+  const start = clean(c.start, 'this week');
+  return {
+    role, topic, freebie, KEY, offer, S, start,
+    CTA: "If you want it, just comment " + KEY + " and I'll send it over.",
+    CAPTION: "Comment " + KEY + " and I'll send you " + freebie + ".",
+    DELIVER: "Hey [name] 👋 here's " + freebie + " like I promised: [link]\n\nI'm curious, what's going on with " + topic + " right now that made you want it?",
+    DELIVERED: "Hey [name] 👋 saw you grabbed " + freebie + ". I'm curious, what's going on with " + topic + " right now that made you want it?",
+    Q2: "Have you worked with " + an(role) + " on this before, or have you mostly been figuring it out on your own?",
+    Q3: "Is this something you want to sort out now, or are you more in gathering mode? Either is fine. I just want to point you to the right thing.",
+    Q4: "What kind of support feels right to you: sitting down with me one on one so we can look at your situation specifically, or something you work through on your own?",
+    CLEAR: "Before I tell you how I work, is there anything else I should know? Anything we haven't touched on?",
+    INVITE: "Thank you for telling me all that. From what you've shared, I'm confident I can help. The way I'd start is " + offer + ". Want me to tell you how it works?",
+    OFFER: "It's " + offer + ". We'd look at [what they told you], and you'd leave knowing [what they said they want]. It's " + money(c.price) + ", and I have openings " + start + ". Want the link to book?",
+    YES: "Here's the link to book: [link]. Message me once you're in and I'll tell you what to bring.",
+    NOTYET: "All good. The guide is yours either way, and you know where I am."
+  };
+}
+
+function stages(c){
+  const L = lines(c);
+  return [
+    { tag: "5 minutes", title: "Before you type", goal: "Look at their profile before you reply. You're looking for one real thing you can mention.", say: ["(Read their bio, their last few posts, and the comment they left.)", "(Find one detail that proves you looked. Their sign, their city, the thing they posted about last week.)"], avoid: "Pasting the same opener to everyone. People can feel it." },
+    { tag: "Question 1", title: "Send it, then ask why", goal: "Keep the promise first. Then find out why they wanted it.", say: [L.DELIVER, "(If your automation already sent it:)", L.DELIVERED], avoid: "Sending the link and nothing else. That's a delivery. It isn't a conversation.", copy: L.DELIVER },
+    { tag: "Stay here", title: "Go one deeper", goal: "Whatever they answer, ask one more question about it before you move on. The first answer is the surface.", say: ["How long has that been going on?", "What do you think is behind it?", "How is that showing up for you day to day?", "What made now the moment you wanted to look at it?"], avoid: "Answering it for them. The second you start doing the " + L.S + " in the DMs, there's nothing left to book." },
+    { tag: "Question 2", title: "What they've tried", goal: "Someone who has paid for help before will pay for help again. Someone who hasn't needs to know what it's like.", say: [L.Q2, "(If yes, and it went well:)", "What did you get from that, and what's still open for you?", "(If yes, and it didn't:)", "I'm sorry that happened. What were you hoping for, and what did you get instead?", "(If no:)", "What's kept you from getting help with it until now?"], copy: L.Q2 },
+    { tag: "Question 3", title: "Is it a now thing", goal: "You're giving them a real chance to say not yet.", say: [L.Q3, "(If now:)", "What's making now the time?", "(If not yet:)", "Totally fair. What would need to happen for this to move up the list?"], avoid: "Inviting someone who just told you not yet. Point them to your free content and check back in a month.", copy: L.Q3 },
+    { tag: "Question 4", title: "The kind of support", goal: "Let them tell you what fits. If they say on their own, the freebie and your content are the answer, and that's fine.", say: [L.Q4], copy: L.Q4 },
+    { tag: "Clear the way", title: "Anything else", goal: "A concern is easier to hear now than after the price. Ask, then listen.", say: [L.CLEAR], copy: L.CLEAR },
+    { tag: "The invitation", title: "Invite them", goal: "Use their words. Say the price once. Then stop typing.", say: [L.INVITE, L.OFFER, "(Stop typing. Let them answer.)"], avoid: "\"No pressure!\" and \"Let me know if you're ever interested.\" Neither one is a question.", copy: L.INVITE + "\n\n" + L.OFFER },
+    { tag: "Close", title: "Yes, or not yet", goal: "Both answers are fine. A maybe held is a no that costs money.", say: ["Yes: " + L.YES, "Not yet: " + L.NOTYET] }
+  ];
+}
+
+function scripts(c){
+  const L = lines(c);
+  return [
+    { when: "\"How much is it?\" · you have one price", say: "Happy to tell you. It's " + money(c.price) + " for " + L.offer + ". Before I send a link, can I ask what's going on with " + L.topic + "? I'd rather know it's the right fit than have you pay for something you don't need.", note: "Answer the question they asked. Then ask yours." },
+    { when: "\"How much is it?\" · it depends", say: "It depends on what you need, and I don't want you paying for more than that. Can you tell me what's going on, so I can point you to the right thing and give you the exact price?", note: "Only use this if it's true. If you have one price, say it." },
+    { when: "They want a free " + L.S + " in the DMs", say: "I love that you want that. I don't do " + L.S + "s in the DMs, because they deserve my full attention and yours. What I can do is point you to the right next step. What's the question you're sitting with?", note: "One tip, max. The " + L.S + " is what they're booking." },
+    { when: "They want advice and nothing else", say: "Thank you, I'm so glad the content's been helping. I don't know enough about your situation yet to say anything useful. Can you tell me what's going on and what you're hoping changes?", note: "You can't help someone you know nothing about. Say so, kindly." },
+    { when: "\"I've been burned before\"", say: "That makes sense, and I'm glad you told me. What would you need to see or know to feel good about trying again?", note: "Don't argue with their experience. Ask what safe looks like to them." },
+    { when: "\"I can't afford it right now\"", say: "I hear you, and thank you for being straight with me. Can I ask, if money weren't a factor, is this something you'd want?", note: "If yes, it's a timing question. Ask when would make sense and check back then. If money is really tight, believe them." },
+    { when: "\"I need to think about it\"", say: "Of course. What specifically do you want to think through? If it helps, tell me and we can look at it together.", note: "There's usually one real question underneath. Find it." },
+    { when: "\"I need to talk to my partner\"", say: "I love that you decide together. What do you think they'll ask? I can give you whatever you need for that conversation.", note: "Help them have the conversation. Don't try to talk them out of having it." },
+    { when: "They already work with someone", say: "Good, I'm glad you have support. How's it going? Is there anything you were hoping for that you're not getting there?", note: "If they're happy, cheer them on and leave it." },
+    { when: "They went quiet · 2 or 3 days later", say: "Hey [name], did you get a chance to open " + L.freebie + "? Curious what stood out to you.", note: "A question about the freebie, not about booking." },
+    { when: "Still quiet · one week later", say: "Closing the loop so I'm not crowding your inbox. If " + L.topic + " comes back up, I'm here. 💜", note: "This is the last one. Two follow-ups, then let it rest." },
+    { when: "After they book", say: "You're in! I'm so glad. Before we meet, send me [birth details / your question / anything you want me to know] so I can prepare.", note: "Tell them what to bring while they're still excited." }
+  ];
+}
+
+const LEAKS = [
+  { h: "I sent the link and nothing else.", p: "They got the freebie and the conversation ended there. The keyword got them into your DMs. What you say next decides if it goes anywhere.", fix: "Send the freebie and the first question in the same message." },
+  { h: "My message didn't end with a question.", p: "\"Hope it helps!\" gives them nothing to answer. If your message ends with a period, the conversation probably ends there too.", fix: "Every message you send ends with one question. Just one." },
+  { h: "I did the reading in the DMs.", p: "They asked about their situation and you answered all of it, for free, by thumb. Generous, and now there's nothing left to book.", fix: "One tip, then a question. The work happens in the session." },
+  { h: "I sent my booking link before I knew what they needed.", p: "A link with no context is a price tag with no reason. They don't know yet why it's for them, and neither do you.", fix: "Four questions first. Then the invitation, in their words." },
+  { h: "I never invited them.", p: "Great conversation, real connection, and then \"let me know if you ever want to work together!\" That isn't an ask.", fix: "Say the offer, say the price, ask if they want the link." }
+];
+
+const KEEPS = [
+  { h: "I looked at their profile before I replied.", p: "Five minutes of looking is the difference between a conversation and a template." },
+  { h: "I used their words back to them.", p: "When they hear their own sentence in your message, they know you were listening." },
+  { h: "I asked one question at a time.", p: "Three questions in one message gets one answer, usually to the easiest one." },
+  { h: "I answered within a day.", p: "They commented because it was on their mind today. Next week it's on someone else's feed." }
+];
+
+const FREEBIES = [
+  { part: "Readers", when: "Tarot, oracle, intuitive", qs: ["A three-card spread for one specific question, with a page to write on", "What your card of the year is asking of you", "Five questions to ask before you pull a card about love"] },
+  { part: "Astrologers", when: "Charts, transits, Human Design", qs: ["Find your Saturn return dates in two minutes", "The one placement to look at for money", "A cheat sheet for the season we're in"] },
+  { part: "Healers", when: "Energy, somatic, breathwork", qs: ["A five-minute reset for the end of a hard day", "A one-week tracker for where you leak energy", "Three signs your body is asking you to stop"] },
+  { part: "Mediums and psychics", when: "Signs, guides, intuition", qs: ["A checklist of the signs people miss", "A seven-day journal for trusting what you get", "How to tell intuition from anxiety"] }
+];
+
+function CopyBtn({ text }){
+  const [ok, setOk] = useState(false);
+  const done = () => { setOk(true); setTimeout(() => setOk(false), 1600); };
+  const copy = async () => {
+    try { await navigator.clipboard.writeText(text); done(); }
+    catch(e){
+      try { const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); done(); } catch(_){}
+    }
+  };
+  return html`<button className="copy" onClick=${copy}>${ok ? 'Copied' : 'Copy'}</button>`;
+}
+
+function Lines({ say }){
+  return html`<ul className="lines">${say.map((l, i) => html`<li key=${i} className=${l.startsWith('(') ? 'dir' : ''} style=${{ whiteSpace: 'pre-line' }}>${l}</li>`)}</ul>`;
+}
+
+function Setup({ c, setC, go }){
+  const L = lines(c);
+  const set = (k, v) => setC(p => ({ ...p, [k]: v, edited: true }));
+  const text = (k, label, hint, ph) => html`
+    <label className="field" htmlFor=${'f-' + k}>
+      <span className="label dim">${label}</span>
+      <input id=${'f-' + k} type="text" value=${c[k]} placeholder=${ph || ''} onChange=${e => set(k, e.target.value)} />
+      ${hint ? html`<small>${hint}</small>` : null}
+    </label>`;
+  return html`
+    <div className="setup">
+      <div className="form">
+        <div className="row2">
+          ${text('role', 'What you are', '', 'tarot reader')}
+          ${text('session', 'What you call your paid session', 'reading, session, healing, chart', 'reading')}
+        </div>
+        ${text('freebie', 'Your free resource', 'The thing you hold up in the video.', 'The Saturn Return Survival Guide')}
+        <div className="row2">
+          ${text('keyword', 'The word they comment', 'One word. Easy to spell.', 'SATURN')}
+          ${text('topic', 'What it helps with', 'Finish this: "What\'s going on with ___?"', 'your love life')}
+        </div>
+        ${text('offer', 'What they book', 'Start with "a". One offer, not a menu.', 'a 60-minute birth chart reading')}
+        <div className="row2">
+          <label className="field" htmlFor="f-price">
+            <span className="label dim">Price</span>
+            <input id="f-price" type="number" min="0" inputMode="numeric" value=${c.price} onChange=${e => set('price', Math.max(0, parseInt(e.target.value || '0', 10) || 0))} />
+          </label>
+          ${text('start', 'Soonest opening', '', 'this week')}
+        </div>
+      </div>
+      <aside className="preview">
+        <span className=${'badge' + (c.edited ? ' ok' : '')}>${c.edited ? 'Your setup' : 'Example · replace it with yours'}</span>
+        <p className="label pink">Your first message</p>
+        <p className="say" style=${{ whiteSpace: 'pre-line' }}>"${L.DELIVER}"</p>
+        <p className="note">Read it out loud. If it doesn't sound like you texting a friend, change the words in the boxes until it does.</p>
+        <div className="facts">
+          <span>Every message now leads to <b>${L.offer}</b> at <b>${money(c.price)}</b>.</span>
+        </div>
+        <div className="row-btns">
+          <button className="ctl go" onClick=${() => go('video')}>Next: the video</button>
+          <button className="linkish" onClick=${() => setC({ ...EXAMPLE })}>Reset to the example</button>
+        </div>
+      </aside>
+    </div>`;
+}
+
+function Video({ c }){
+  const L = lines(c);
+  return html`
+    <div>
+      <div className="block" style=${{ marginTop: 0 }}>
+        <p className="label mint">Step one · the resource</p>
+        <h3>A freebie that leads somewhere</h3>
+        <p>The best free resource does the first step for them, and makes the second step obvious. The second step is ${L.offer}.</p>
+        <div className="doors3">
+          <div className="door"><p className="label pink">It does one thing</p><h4>Small enough to finish</h4><p>One page, one spread, one checklist. If they can't use it today, it's a course.</p></div>
+          <div className="door"><p className="label pink">It opens a question</p><h4>"Okay, but what about mine?"</h4><p>A good guide shows them the pattern. Your ${L.S} shows them theirs.</p></div>
+          <div className="door"><p className="label pink">You can hold it up</p><h4>It looks like something</h4><p>They comment for what they can see. Show it on screen and scroll through it.</p></div>
+        </div>
+      </div>
+
+      <div className="block">
+        <p className="label mint">If you're stuck on what to make</p>
+        <h3>Ideas to start from</h3>
+        <p>Pick the question people already ask you in the comments. That's your freebie.</p>
+        <div className="qgroups">
+          ${FREEBIES.map((g, i) => html`
+            <div key=${i} className="qgroup">
+              <p className="label pink">${g.part}</p>
+              <p className="when">${g.when}</p>
+              <ul>${g.qs.map((q, j) => html`<li key=${j}>${q}</li>`)}</ul>
+            </div>`)}
+        </div>
+      </div>
+
+      <div className="block">
+        <p className="label mint">Step two · under 45 seconds · one take</p>
+        <h3>What to say in the video</h3>
+        <p>You're showing the resource, not describing it. Have it open on your screen or printed in your hand.</p>
+        <ul className="flow">
+          <li><span className="tm">0:00–0:03</span><div><b>Name the problem</b><span>In the words they'd use. The exact thing they typed into your comments last week.</span></div></li>
+          <li><span className="tm">0:03–0:15</span><div><b>Show it</b><span>Hold up ${L.freebie}. Scroll it, flip it, point at it.</span></div></li>
+          <li><span className="tm">0:15–0:30</span><div><b>Three things inside</b><span>What they'll be able to do after ten minutes with it.</span></div></li>
+          <li><span className="tm">0:30–0:35</span><div><b>Who it's for</b><span>One sentence. The right people should feel called out.</span></div></li>
+          <li><span className="tm">0:35–end</span><div><b>The keyword</b><span>"${L.CTA}"</span></div></li>
+        </ul>
+      </div>
+
+      <div className="scripts" style=${{ marginTop: '18px' }}>
+        <div className="script-card">
+          <p className="label pink">Say this at the end</p>
+          <p className="say">"${L.CTA}"</p>
+          <p className="note">Say the word out loud and put it on screen. One keyword per video.</p>
+          <${CopyBtn} text=${L.CTA} />
+        </div>
+        <div className="script-card">
+          <p className="label pink">First line of your caption</p>
+          <p className="say">"${L.CAPTION}"</p>
+          <p className="note">Then reply to every comment, so the next person sees that you actually send it.</p>
+          <${CopyBtn} text=${L.CAPTION} />
+        </div>
+      </div>
+    </div>`;
+}
+
+function Framework({ s, setS, c }){
+  const L = lines(c);
+  const flip = (k) => setS(p => ({ ...p, [k]: !p[k] }));
+  const leaks = LEAKS.filter((_, i) => s['l' + i]);
+  const first = LEAKS.find((_, i) => s['l' + i]);
+  return html`
+    <div>
+      <div className="apq">
+        <div className="door a"><span className="letter">A</span><p className="label mint">Acknowledge</p><h4>Show them you read it</h4><p>Say back what they told you, in their words. One sentence.</p></div>
+        <div className="door p"><span className="letter">P</span><p className="label" style=${{ color: 'var(--lav)' }}>Personalize</p><h4>Make it about them</h4><p>Connect it to something only they said, or something you saw on their profile.</p></div>
+        <div className="door q3"><span className="letter">Q</span><p className="label gold">Question</p><h4>End with one question</h4><p>One. Easy to answer from their phone. It moves you to the next thing you need to know.</p></div>
+      </div>
+
+      <div className="chat">
+        <p className="label dim">Example</p>
+        <div className="bub them"><span className="who">They say</span>honestly everything has felt like it's falling apart since I turned 29</div>
+        <div className="bub you"><span className="who">You say</span><mark className="a">That's a lot to be carrying, and it makes sense.</mark> <mark className="p">29 is right when Saturn comes back around, and I saw you just moved cities too.</mark> <mark className="q3">What's the part that feels the most stuck right now?</mark></div>
+        <div className="key"><span><i style=${{ background: 'var(--mint)' }}></i>Acknowledge</span><span><i style=${{ background: 'var(--lav)' }}></i>Personalize</span><span><i style=${{ background: 'var(--gold)' }}></i>Question</span></div>
+      </div>
+
+      <div className="block">
+        <p className="label mint">Before you change anything</p>
+        <h3>Score your last DM conversation</h3>
+        <p>Open the last conversation that started with a keyword comment. Tick what actually happened.</p>
+      </div>
+      <div className="cols">
+        <div>
+          <p className="label pink">Where it leaked</p>
+          ${LEAKS.map((w, i) => html`
+            <button key=${i} className="tick leak" aria-pressed=${!!s['l' + i]} onClick=${() => flip('l' + i)}>
+              <span className="box" aria-hidden="true"></span>
+              <span><h3>${w.h}</h3><p>${w.p}</p></span>
+            </button>`)}
+        </div>
+        <div>
+          <p className="label mint">What you already do well</p>
+          ${KEEPS.map((w, i) => html`
+            <button key=${i} className="tick keep" aria-pressed=${!!s['k' + i]} onClick=${() => flip('k' + i)}>
+              <span className="box" aria-hidden="true"></span>
+              <span><h3>${w.h}</h3><p>${w.p}</p></span>
+            </button>`)}
+          <div className="verdict">
+            <p className="label gold">Your last conversation</p>
+            <div className="v">${leaks.length} of 5 leaks</div>
+            <p>${first ? 'Fix this one first: ' + first.fix : 'Nothing ticked yet. Be honest. This is the list we fix.'}</p>
+          </div>
+        </div>
+      </div>
+      <div className="callout">
+        <p className="label gold">The one thing</p>
+        <p className="big">Every message you send ends with a question.</p>
+        <p>If 20 people comment ${L.KEY}, 10 answer your first question and 2 book, that's ${money(2 * c.price)} from one video you already made.</p>
+      </div>
+    </div>`;
+}
+
+function Flow({ c, step, setStep }){
+  const st = stages(c);
+  const L = lines(c);
+  const [open, setOpen] = useState(step);
+  useEffect(() => setOpen(step), [step]);
+  return html`
+    <div>
+      <div className="stages">
+        ${st.map((s, i) => {
+          const isOpen = open === i;
+          const cls = 'stage' + (i === step ? ' cur' : '') + (i < step ? ' past' : '');
+          return html`
+            <div key=${i} className=${cls}>
+              <button className="stage-head" aria-expanded=${isOpen} onClick=${() => setOpen(isOpen ? -1 : i)}>
+                <span className="stage-tag">${s.tag}</span>
+                <span className="stage-title">${s.title}</span>
+                <span className="chev">${isOpen ? '−' : '+'}</span>
+              </button>
+              ${isOpen ? html`
+                <div className="stage-body">
+                  <p className="goal">${s.goal}</p>
+                  <${Lines} say=${s.say} />
+                  ${s.avoid ? html`<p className="avoid"><b>Skip:</b> ${s.avoid}</p>` : null}
+                  <div className="stage-foot">
+                    ${s.copy ? html`<${CopyBtn} text=${s.copy} />` : null}
+                    ${i < st.length - 1
+                      ? html`<button className="linkish" onClick=${() => setStep(i + 1)}>Done. Show me the next one</button>`
+                      : html`<button className="linkish" onClick=${() => setStep(0)}>Start a new conversation</button>`}
+                  </div>
+                </div>` : null}
+            </div>`;
+        })}
+      </div>
+
+      <div className="block">
+        <p className="label pink">Read this twice</p>
+        <h3>Three times you don't invite</h3>
+        <p>People comment on spiritual content when something in their life is loud. Some of them need a ${L.S}. Some of them need something else first.</p>
+        <div className="doors3">
+          <div className="door"><h4>They're in crisis</h4><p>A loss this week, a health scare, something that sounds unsafe. Be a person first. Point them to real support, and leave the offer out of it.</p></div>
+          <div className="door"><h4>They told you money is tight</h4><p>Believe them. The freebie is theirs, your free content is theirs, and the door stays open.</p></div>
+          <div className="door"><h4>They need something you don't do</h4><p>Say so, and send them to someone who does. That's how people come back to you later.</p></div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function Tracker({ t, setT, c }){
+  const [armed, setArmed] = useState(false);
+  const L = lines(c);
+  const bump = (k, d) => setT(p => ({ ...p, [k]: Math.max(0, (p[k] || 0) + d) }));
+  const pct = (a, b) => b ? Math.round(a / b * 100) : 0;
+  const counter = (k, label) => html`
+    <div className="counter">
+      <p className="label dim">${label}</p>
+      <div className="v">${t[k]}</div>
+      <div className="pm"><button aria-label=${'Remove one from ' + label} onClick=${() => bump(k, -1)}>−</button><button aria-label=${'Add one to ' + label} onClick=${() => bump(k, 1)}>+</button></div>
+    </div>`;
+  return html`
+    <div>
+      <div className="logs">
+        <button className="log" onClick=${() => bump('talked', 1)}><b>They answered my first question</b><span>A conversation started.</span></button>
+        <button className="log" onClick=${() => bump('invited', 1)}><b>I invited them</b><span>Offer, price, "want the link?"</span></button>
+        <button className="log win" onClick=${() => bump('booked', 1)}><b>They booked</b><span>Tell them what to bring.</span></button>
+      </div>
+      <div className="counters">
+        <div className="counter">
+          <label className="label dim" htmlFor="t-comments">${L.KEY} comments</label>
+          <input id="t-comments" type="number" min="0" inputMode="numeric" value=${t.comments} onChange=${e => setT(p => ({ ...p, comments: Math.max(0, parseInt(e.target.value || '0', 10) || 0) }))} />
+          <p className="note" style=${{ margin: 0 }}>Count them on the video</p>
+        </div>
+        ${counter('talked', 'Conversations')}
+        ${counter('invited', 'Invited')}
+        ${counter('booked', 'Booked')}
+      </div>
+      <div className="stats2">
+        <div className="stat">
+          <p className="label gold">Comments that became conversations</p>
+          <div className="v">${pct(t.talked, t.comments)}%</div>
+          <p>${t.talked} of ${t.comments}. Low? Look at your first message.</p>
+        </div>
+        <div className="stat">
+          <p className="label gold">Conversations that got an invitation</p>
+          <div className="v">${pct(t.invited, t.talked)}%</div>
+          <p>${t.invited} of ${t.talked}. This is the number you control.</p>
+        </div>
+        <div className="stat">
+          <p className="label gold">Booked</p>
+          <div className="v">${money(t.booked * c.price)}</div>
+          <p>${t.booked} booked, ${pct(t.booked, t.invited)}% of the people you invited.</p>
+        </div>
+      </div>
+      <p className="receipt" style=${{ marginTop: '28px', marginBottom: 0 }}><b>No targets on purpose.</b> Your first 30 days of numbers are your benchmark. After that, change one thing at a time and watch which number moves.</p>
+      <button className="linkish reset" onClick=${() => { if (armed) { setT({ comments: t.comments, talked: 0, invited: 0, booked: 0 }); setArmed(false); } else { setArmed(true); setTimeout(() => setArmed(false), 3000); } }}>${armed ? 'Tap again to clear the counts' : 'Clear the counts'}</button>
+    </div>`;
+}
+
+const TABS = [
+  ['setup', 'Your setup'], ['video', 'The video'], ['apq', 'A · P · Q'],
+  ['flow', 'The conversation'], ['scripts', 'What to say when'], ['tracker', 'Tracker']
+];
+
+function App(){
+  const [tab, setTab] = useState(() => store.get('tab', 'setup'));
+  const [c, setC] = useState(() => ({ ...EXAMPLE, ...store.get('setup', {}) }));
+  const [s, setS] = useState(() => store.get('score', {}));
+  const [t, setT] = useState(() => store.get('tracker', { comments: 20, talked: 0, invited: 0, booked: 0 }));
+  const [step, setStep] = useState(0);
+  useEffect(() => store.set('tab', tab), [tab]);
+  useEffect(() => store.set('setup', c), [c]);
+  useEffect(() => store.set('score', s), [s]);
+  useEffect(() => store.set('tracker', t), [t]);
+
+  const go = (id) => {
+    setTab(id);
+    requestAnimationFrame(() => { const el = document.getElementById('content'); if (el) el.scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' }); });
+  };
+  const L = lines(c);
+
+  const hero = [
+    { id: 'setup', n: '01', t: 'Your setup', tag: 'Start here', w: 'w1' },
+    { id: 'video', n: '02', t: 'The video', tag: L.KEY, w: 'w2' },
+    { id: 'flow', n: '03', t: 'The conversation', tag: '4 questions', w: 'w3' },
+    { id: 'scripts', n: '04', t: 'What to say when', tag: '12 replies', w: 'w4' }
+  ];
+
+  return html`
+    <header className="hero">
+      <div>
+        <p className="eyebrow">Spiritual Business Skool · DM playbook</p>
+        <h1>Every DM<br/>Ends With<span className="script">a Question.</span></h1>
+        <p className="tagline">Acknowledge. Personalize. Question.</p>
+        <p className="lede">What to say after someone comments your keyword. Put your freebie and your offer in once, and every message fills in with your words. Keep this open next to your DMs.</p>
+        <p className="sig"><b>Amanda Fielding-Smith</b> · Spiritual Business Skool</p>
+        <div className="btns">
+          <button className="btn btn-primary" onClick=${() => go('setup')}>Set up your messages</button>
+          <button className="btn btn-ghost" onClick=${() => go('flow')}>Open the conversation</button>
+        </div>
+      </div>
+      <nav className="stack" aria-label="Jump to a section">
+        <p className="stack-label">From comment</p>
+        ${hero.map(h => html`
+          <button key=${h.id} className=${'stage-card ' + h.w} onClick=${() => go(h.id)}>
+            <span><span className="n">${h.n}</span><span className="t">${h.t}</span></span>
+            <span className="tag">${h.tag}</span>
+          </button>`)}
+        <div className="connector"></div>
+        <p className="stack-label end">${L.offer}</p>
+        <p className="stack-label">Tap a card to jump in</p>
+      </nav>
+    </header>
+
+    <div className="nav" id="content">
+      <div className="nav-in" role="tablist">
+        ${TABS.map(([id, label]) => html`<button key=${id} role="tab" aria-selected=${tab === id} className=${'pill' + (tab === id ? ' on' : '')} onClick=${() => setTab(id)}>${label}</button>`)}
+      </div>
+    </div>
+
+    <main className="main">
+      <section hidden=${tab !== 'setup'}>
+        <p className="label pink">Two minutes, once</p>
+        <h2>The offer every DM <span className="script">leads to.</span></h2>
+        <p className="sub">Fill this in and the whole playbook rewrites itself around your freebie, your keyword and your offer. It saves on this device only.</p>
+        <${Setup} c=${c} setC=${setC} go=${go} />
+      </section>
+
+      <section hidden=${tab !== 'video'}>
+        <p className="label pink">Where the conversation starts</p>
+        <h2>Show it. Say the word. <span className="script">Send it.</span></h2>
+        <p className="sub">Make one free resource, make a video where you hold it up, and tell people the word to comment. Everyone who comments has just told you what they need help with.</p>
+        <${Video} c=${c} />
+      </section>
+
+      <section hidden=${tab !== 'apq'}>
+        <p className="label pink">The shape of every reply</p>
+        <h2>Acknowledge. Personalize. <span className="script">Question.</span></h2>
+        <p className="sub">Three parts, in this order, in every message you send. It's how a DM stops feeling like a pitch and starts feeling like being listened to.</p>
+        <${Framework} s=${s} setS=${setS} c=${c} />
+      </section>
+
+      <section hidden=${tab !== 'flow'}>
+        <p className="label pink">Four questions, then the invitation</p>
+        <h2>The <span className="script">conversation.</span></h2>
+        <p className="sub">One question per message. Wait for the answer. Go one deeper before you move on. By the time you invite them, you know what's going on, what they've tried, whether it's a now thing, and what kind of help they want.</p>
+        <${Flow} c=${c} step=${step} setStep=${setStep} />
+      </section>
+
+      <section hidden=${tab !== 'scripts'}>
+        <p className="label pink">Word for word</p>
+        <h2>What to say <span className="script">when.</span></h2>
+        <p className="sub">The moments that make people freeze. Copy it, change the words that don't sound like you, send it.</p>
+        <div className="scripts">
+          ${scripts(c).map((x, i) => html`
+            <div key=${i} className="script-card">
+              <p className="label pink">${x.when}</p>
+              <p className="say">"${x.say}"</p>
+              <p className="note">${x.note}</p>
+              <${CopyBtn} text=${x.say} />
+            </div>`)}
+        </div>
+      </section>
+
+      <section hidden=${tab !== 'tracker'}>
+        <p className="label pink">Log it when you close the app</p>
+        <h2>Your DM <span className="script">tracker.</span></h2>
+        <p className="sub">Four numbers, from comment to booked. This saves on this device only.</p>
+        <${Tracker} t=${t} setT=${setT} c=${c} />
+      </section>
+
+      <div className="help">
+        <p className="label mint">Want this built around your offer?</p>
+        <h3>I'll go through your freebie, your video and your DMs with you.</h3>
+        <p>That's a Strategy Audit. You send me what you have, I go through all of it before we talk, and you leave with the plan. Limited availability.</p>
+        <a className="btn btn-primary" href=${AUDIT_LINK} target="_blank" rel="noopener">Book a Strategy Audit</a>
+      </div>
+
+      <p className="signoff">You've got this. xoxo, Amanda</p>
+    </main>`;
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(html`<${App} />`);
+</script>
+</body>
+</html>
