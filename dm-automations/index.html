@@ -149,7 +149,15 @@ button[disabled]{opacity:.5;cursor:default}
 .chip.day{color:var(--mint);border-color:rgba(127,224,184,.4);font-family:"DM Mono",monospace}
 .chip.mine{color:var(--gold);border-color:rgba(232,200,120,.4)}
 .chip.tpl{color:var(--pink);border-color:rgba(240,139,176,.4)}
-.msg pre{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font-family:Outfit,system-ui,sans-serif;font-weight:400;font-size:15.5px;line-height:1.6;color:var(--txt);background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.msg textarea{display:block;width:100%;min-height:0;resize:none;overflow:hidden;margin:0;font-family:Outfit,system-ui,sans-serif;font-weight:400;font-size:15.5px;line-height:1.6;color:var(--txt);background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;transition:border-color .2s}
+.msg textarea:hover{border-color:var(--line2)}
+.msg textarea:focus{border-color:var(--lav)}
+.chip.you{color:var(--mint);border-color:rgba(127,224,184,.4)}
+.msg .acts{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.undo{font-size:13px;color:var(--muted);background:none;border:0;padding:0;border-radius:4px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.undo:hover{color:var(--txt)}
+.editnote{margin:26px 0 0;border:1px solid rgba(127,224,184,.35);border-radius:18px;padding:16px 20px;color:var(--soft);font-size:15.5px}
+.editnote b{color:var(--mint);font-weight:600}
 .msg .why{color:var(--muted);font-size:14.5px;margin:12px 0 0}
 .msg .row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap;margin-top:12px}
 .msg .row .why{margin:0;flex:1 1 260px;min-width:0}
@@ -305,9 +313,15 @@ button[disabled]{opacity:.5;cursor:default}
   function sec(c){var s=el('section'); s.appendChild(c); return s;}
   function dots(items){var ul=el('ul','dots'); items.forEach(function(t){ul.appendChild(el('li',null,t));}); return ul;}
   function ext(label,url,cls){var a=el('a',cls||null,label); a.href=url; a.target='_blank'; a.rel='noopener'; return a;}
-  function copyBtn(text){
+  var saved={};
+  try{saved=JSON.parse(localStorage.getItem('dm-automations:edits')||'{}')||{};}catch(e){saved={};}
+  function persist(){try{localStorage.setItem('dm-automations:edits',JSON.stringify(saved));}catch(e){}}
+  function fit(ta){ta.style.height='auto'; ta.style.height=(ta.scrollHeight+2)+'px';}
+  function fitAll(){document.querySelectorAll('.msg textarea').forEach(fit);}
+  function copyBtn(getText){
     var b=el('button','copy','Copy');
     b.onclick=function(){
+      var text=getText();
       function ok(){b.textContent='Copied'; setTimeout(function(){b.textContent='Copy';},1600);}
       function fallback(){try{var ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); ok();}catch(e){}}
       try{navigator.clipboard.writeText(text).then(ok).catch(fallback);}catch(e){fallback();}
@@ -320,10 +334,24 @@ button[disabled]{opacity:.5;cursor:default}
     top.appendChild(el('span','cmd','/'+m.cmd));
     top.appendChild(el('span','chip',m.delay));
     if(m.day!=null) top.appendChild(el('span','chip day','lands day '+m.day));
-    top.appendChild(el('span','chip '+(m.src==='mine'?'mine':'tpl'), m.src==='mine'?'Mine, word for word':'Template'));
+    var src=el('span'); top.appendChild(src);
     b.appendChild(top);
-    b.appendChild(el('pre',null,m.text));
-    var row=el('div','row'); row.appendChild(el('p','why',m.why)); row.appendChild(copyBtn(m.text)); b.appendChild(row);
+    var ta=el('textarea'); ta.id='msg-'+m.cmd; ta.rows=1; ta.spellcheck=true; ta.setAttribute('aria-label','Message for /'+m.cmd+'. Edit it to sound like you.');
+    ta.value=(typeof saved[m.cmd]==='string')?saved[m.cmd]:m.text;
+    var undo=el('button','undo','Back to the original');
+    function mark(){
+      var mine=ta.value!==m.text;
+      src.className='chip '+(mine?'you':(m.src==='mine'?'mine':'tpl'));
+      src.textContent=mine?'Your version':(m.src==='mine'?'Mine, word for word':'Template');
+      undo.hidden=!mine;
+    }
+    ta.oninput=function(){ if(ta.value===m.text) delete saved[m.cmd]; else saved[m.cmd]=ta.value; persist(); fit(ta); mark(); };
+    undo.onclick=function(){ ta.value=m.text; delete saved[m.cmd]; persist(); fit(ta); mark(); };
+    mark();
+    b.appendChild(ta);
+    var row=el('div','row'); row.appendChild(el('p','why',m.why));
+    var acts=el('div','acts'); acts.appendChild(undo); acts.appendChild(copyBtn(function(){return ta.value;})); row.appendChild(acts);
+    b.appendChild(row);
     return b;
   }
 
@@ -335,7 +363,7 @@ button[disabled]{opacity:.5;cursor:default}
   var h1=el('h1'); h1.appendChild(document.createTextNode('Your DM ')); h1.appendChild(el('span','serif','Automations Guide')); hero.appendChild(h1);
   hero.appendChild(el('p','desc','The five automated DMs I run in my Skool: the exact messages, when each one sends, and how to make them sound like you.'));
   hero.appendChild(el('p','prep','Prepared by Amanda, Spiritual Business Skool. What to send when someone joins, upgrades, cancels, leaves, or their card declines.'));
-  var cta=el('div','cta'); cta.appendChild(ext('Get Panda',PANDA,'btn')); cta.appendChild(el('small',null,'My affiliate link. Panda is the Chrome extension I pay for and use every day. It works on Hobby and Pro.')); hero.appendChild(cta);
+  var cta=el('div','cta'); cta.appendChild(ext('🐼 Get Panda',PANDA,'btn')); cta.appendChild(el('small',null,'My affiliate link. Panda is the Chrome extension I pay for and use every day. It works on Hobby and Pro.')); hero.appendChild(cta);
   app.appendChild(hero);
 
   // snapshot
@@ -383,6 +411,10 @@ button[disabled]{opacity:.5;cursor:default}
     pre.appendChild(b);});
   dc.appendChild(pre); app.appendChild(sec(dc));
 
+  // edit note
+  var en=el('p','editnote'); en.innerHTML='<b>Every message below is editable.</b> Tap into one, change the words until it sounds like you, swap in your links, then hit copy. Your edits save on this device only.';
+  app.appendChild(en);
+
   // the five
   AUTOS.forEach(function(a,i){
     var c=card(); c.appendChild(el('p','kick',a.panda)); head(c,a.name); c.appendChild(el('p','job',a.job));
@@ -411,11 +443,16 @@ button[disabled]{opacity:.5;cursor:default}
   mc.appendChild(mv); app.appendChild(sec(mc));
 
   // get panda
-  var gc=card(); var g=el('div','get'); var gp=el('p',null,'Everything in this guide runs on Panda, next to your Skool.');
+  var gc=card(); var g=el('div','get'); var gp=el('p',null,'🐼 Everything in this guide runs on Panda, next to your Skool.');
   gp.appendChild(el('small',null,'This is my affiliate link, so I earn a commission if you join through it. Panda is an independent tool and isn\'t part of Skool.'));
-  g.appendChild(gp); g.appendChild(ext('Get Panda',PANDA,'btn')); gc.appendChild(g); app.appendChild(sec(gc));
+  g.appendChild(gp); g.appendChild(ext('🐼 Get Panda',PANDA,'btn')); gc.appendChild(g); app.appendChild(sec(gc));
 
   app.appendChild(el('p','sign','xoxo, Amanda 💜'));
+
+  fitAll();
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
+  window.addEventListener('load',fitAll);
+  window.addEventListener('resize',fitAll);
 })();
 </script>
 </body>
